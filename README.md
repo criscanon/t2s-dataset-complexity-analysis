@@ -1,4 +1,4 @@
-# T2S Dataset Complexity Analysis
+# t2s-dataset-complexity-analysis
 
 This repository contains a Python script that analyzes the complexity of SQL queries extracted from an Excel file. The tool uses the [sqlparse](https://github.com/andialbrecht/sqlparse) library to parse and extract metrics from each query and [matplotlib](https://matplotlib.org/) to generate visualizations that help understand the distribution and complexity of the queries.
 
