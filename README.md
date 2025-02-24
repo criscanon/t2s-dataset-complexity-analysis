@@ -1,85 +1,83 @@
-# t2s-dataset-complexity-analysis
+# T2S Dataset Complexity Analysis
 
-Este repositorio contiene un script en Python para analizar la complejidad de consultas SQL extraídas de un archivo Excel. La herramienta utiliza la biblioteca [sqlparse](https://github.com/andialbrecht/sqlparse) para procesar y extraer métricas de cada consulta, y [matplotlib](https://matplotlib.org/) para generar visualizaciones que ayudan a comprender la distribución y complejidad de las consultas.
-
----
-
-## Características
-
-El script realiza los siguientes análisis sobre cada consulta SQL:
-
-- **Conteo de JOINs**: Determina cuántas veces se utilizan cláusulas `JOIN`.
-- **Detección de subconsultas**: Cuenta la cantidad de subconsultas (anidamientos de `SELECT`).
-- **Condiciones en WHERE**: Mide el número de condiciones presentes en la cláusula `WHERE`.
-- **Funciones SQL**: Cuenta la cantidad de funciones utilizadas.
-- **Tablas involucradas**: Identifica y cuenta las tablas referenciadas en la consulta.
-- **Agrupaciones y ordenamientos**: Evalúa la presencia de cláusulas `GROUP BY` y `ORDER BY`.
-- **Longitud del código**: Mide la longitud de la consulta en líneas y caracteres.
-- **Métrica de complejidad**: Calcula una métrica compuesta ponderando cada uno de los elementos anteriores.
-
-Además, el script genera diferentes gráficos (histogramas, gráficos circulares y diagramas de radar) para visualizar la distribución de las métricas analizadas.
+This repository contains a Python script that analyzes the complexity of SQL queries extracted from an Excel file. The tool uses the [sqlparse](https://github.com/andialbrecht/sqlparse) library to parse and extract metrics from each query and [matplotlib](https://matplotlib.org/) to generate visualizations that help understand the distribution and complexity of the queries.
 
 ---
 
-## Estructura del Repositorio
+## Features
 
-La organización del repositorio es la siguiente:
+The script performs the following analyses on each SQL query:
+
+- **JOIN Count:** Counts the number of `JOIN` clauses used.
+- **Subquery Detection:** Counts the number of nested `SELECT` statements (subqueries).
+- **WHERE Conditions:** Measures the number of conditions in the `WHERE` clause.
+- **SQL Functions:** Counts the number of SQL functions utilized.
+- **Table References:** Identifies and counts the tables referenced.
+- **GROUP BY and ORDER BY:** Evaluates the presence of `GROUP BY` and `ORDER BY` clauses.
+- **Query Length:** Measures the query length in lines and characters.
+- **Complexity Metric:** Calculates an overall complexity metric by weighting the above elements.
+
+Additionally, the script generates various visualizations—including histograms, pie charts, and a radar chart—to display the distribution of the analyzed metrics.
+
+---
+
+## Repository Structure
 
 ```
 t2s-dataset-complexity-analysis/
-├── dataset/                     # Carpeta con el archivo Excel que contiene las consultas SQL.
-├── output/                      # Carpeta donde se guardan los resultados y gráficos generados.
-├── LICENSE                      # Archivo de licencia (MIT).
-├── README.md                    # Este archivo.
-├── requirements.txt             # Archivo con las dependencias necesarias.
-└── run_analysis_complexity_dataset.py   # Script principal de ejecución.
+├── dataset/                           # Contains the Excel file with SQL queries.
+├── output/                            # Directory where analysis results and visualizations are saved.
+├── LICENSE                            # Project license (MIT).
+├── README.md                          # This file.
+├── requirements.txt                   # List of required dependencies.
+└── run_analysis_complexity_dataset.py # Main Python script to run the analysis.
 ```
 
 ---
 
-## Instalación
+## Installation
 
-Sigue estos pasos para preparar y ejecutar el análisis:
+Follow these steps to set up and run the analysis:
 
-1. **Clonar el repositorio**
+1. **Clone the repository:**
    ```sh
    git clone https://github.com/criscanon/t2s-dataset-complexity-analysis.git
    cd t2s-dataset-complexity-analysis
    ```
 
-2. **Instalar dependencias**
-   Asegúrate de tener instalado [Python](https://www.python.org/) (recomendado Python 3.7 o superior) y ejecuta:
+2. **Install dependencies:**
+   Ensure you have [Python](https://www.python.org/) (version 3.7 or later recommended) installed, then run:
    ```sh
    pip install -r requirements.txt
    ```
 
-3. **Preparar el dataset**
-   - Coloca el archivo Excel (por ejemplo, `data-nlq-sql-80.xlsx`) dentro de la carpeta `dataset/`.
-   - Asegúrate de que el archivo contenga una columna llamada `sql` con las consultas a analizar.
+3. **Prepare the dataset:**
+   - Place your Excel file (e.g., `data-nlq-sql-120.xlsx`) inside the `dataset/` folder.
+   - Ensure the file contains a column named `sql` with the SQL queries to analyze.
 
-4. **Ejecutar el análisis**
+4. **Run the analysis:**
    ```sh
    python run_analysis_complexity_dataset.py
    ```
 
 ---
 
-## Salida y Resultados
+## Output and Results
 
-Al ejecutar el script, se generan los siguientes resultados en la carpeta `output/`:
+After running the script, the following outputs will be generated in the `output/` folder:
 
-- **`query_analysis_results.xlsx`**: Archivo Excel con las métricas extraídas para cada consulta.
-- **Gráficos de distribución**:
-  - Histogramas de JOINs, subconsultas, condiciones en WHERE, funciones, tablas, GROUP BY, ORDER BY, líneas y caracteres.
-  - Un histograma de la métrica de complejidad global.
-  - Gráficos circulares y un diagrama de radar que muestran la composición de las métricas.
+- **query_analysis_results.xlsx:** An Excel file containing the metrics extracted for each query.
+- **Visualizations:**
+  - Histograms for JOINs, subqueries, WHERE conditions, functions, table references, GROUP BY, ORDER BY, query lines, and characters.
+  - A histogram of the overall complexity metric.
+  - Pie charts and a radar chart showing the composition of the metrics.
 
-Además, se imprime en consola un resumen de la frecuencia de cada métrica (por ejemplo, cuántas consultas tienen más de cero JOINs, subconsultas, etc.).
+Additionally, a summary of the metrics (e.g., the frequency of queries with more than zero JOINs, subqueries, etc.) is printed to the console.
 
 ---
 
-## Licencia
+## License
 
-Este proyecto se distribuye bajo la [Licencia MIT](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
 ---
